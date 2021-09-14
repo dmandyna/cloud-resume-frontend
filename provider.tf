@@ -18,7 +18,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "eu-west-1"
+  region = var.region
   default_tags {
     tags = {
       managed_by = "terraform"
