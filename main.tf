@@ -114,9 +114,10 @@ resource "aws_acm_certificate_validation" "this" {
 }
 
 resource "aws_route53_record" "cloudfront" {
-  zone_id = data.aws_route53_zone.this.zone_id
-  name    = "cv.dmandyna.co.uk"
-  type    = "CNAME"
-  ttl     = "300"
-  records = [aws_cloudfront_distribution.this.domain_name]
+  allow_overwrite = true
+  name            = "cv.dmandyna.co.uk"
+  records         = [aws_cloudfront_distribution.this.domain_name]
+  ttl             = "300"
+  type            = "CNAME"
+  zone_id         = data.aws_route53_zone.this.zone_id
 }
